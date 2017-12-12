@@ -4,10 +4,10 @@ import com.google.common.base.Strings;
 import com.google.gson.annotations.Expose;
 
 /**
- * Created by gechuanguang on 2017/7/31.
+ * @author qiujuer Email:qiujuer@live.cn
+ * @version 1.0.0
  */
-public class RegisterModel  {
-
+public class RegisterModel {
     @Expose
     private String account;
     @Expose

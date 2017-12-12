@@ -107,7 +107,7 @@ public class UpdateInfoFragment extends Fragment {
             @Override
             public void run() {
                 String url = UploadHelper.uploadPortrait(localPath);
-                Log.e("TAG", "url:" + url);
+                Log.e("PRETTY_LOGGER", "url:" + url);
             }
         });
     }

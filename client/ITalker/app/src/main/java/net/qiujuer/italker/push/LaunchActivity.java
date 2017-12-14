@@ -2,7 +2,7 @@ package net.qiujuer.italker.push;
 
 
 import net.qiujuer.italker.common.app.Activity;
-import net.qiujuer.italker.push.activities.MainActivity;
+import net.qiujuer.italker.push.activities.AccountActivity;
 import net.qiujuer.italker.push.frags.assist.PermissionsFragment;
 
 public class LaunchActivity extends Activity {
@@ -19,7 +19,8 @@ public class LaunchActivity extends Activity {
         super.onResume();
 
         if (PermissionsFragment.haveAll(this, getSupportFragmentManager())) {
-            MainActivity.show(this);
+//            MainActivity.show(this);
+            AccountActivity.show(this);
             finish();
         }
     }

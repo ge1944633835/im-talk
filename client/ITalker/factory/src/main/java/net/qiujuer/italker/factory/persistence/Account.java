@@ -3,7 +3,9 @@ package net.qiujuer.italker.factory.persistence;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
+
 import com.raizlabs.android.dbflow.sql.language.SQLite;
+
 import net.qiujuer.italker.factory.Factory;
 import net.qiujuer.italker.factory.model.api.account.AccountRspModel;
 import net.qiujuer.italker.factory.model.db.User;
@@ -151,6 +153,15 @@ public class Account {
                 .from(User.class)
                 .where(User_Table.id.eq(userId))
                 .querySingle();
+    }
+
+    /**
+     * 返回用户Id
+     *
+     * @return 用户Id
+     */
+    public static String getUserId() {
+        return getUser().getId();
     }
 
     /**

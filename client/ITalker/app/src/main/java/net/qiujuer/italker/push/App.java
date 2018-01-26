@@ -1,5 +1,7 @@
 package net.qiujuer.italker.push;
 
+import android.content.Context;
+
 import com.igexin.sdk.PushManager;
 
 import net.qiujuer.italker.common.app.Application;
@@ -18,5 +20,13 @@ public class App extends Application {
         Factory.setup();
         // 推送进行初始化
         PushManager.getInstance().initialize(this);
+    }
+
+    @Override
+    protected void showAccountView(Context context) {
+
+        // 登录界面的显示
+
+
     }
 }

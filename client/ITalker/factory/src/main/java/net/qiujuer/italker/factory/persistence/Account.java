@@ -96,6 +96,24 @@ public class Account {
     }
 
     /**
+     *  用户退出登陆
+     *  @author sunlight
+     */
+    public static void logout(Context context){
+        SharedPreferences sp = context.getSharedPreferences(Account.class.getName(),
+                Context.MODE_PRIVATE);
+        // 存储数据
+        sp.edit()
+                .putString(KEY_PUSH_ID, "")
+                .putBoolean(KEY_IS_BIND, false)
+                .putString(KEY_TOKEN, "")
+                .putString(KEY_USER_ID, "")
+                .putString(KEY_ACCOUNT, "")
+                .apply();
+
+    }
+
+    /**
      * 是否已经完善了用户信息
      *
      * @return True 是完成了

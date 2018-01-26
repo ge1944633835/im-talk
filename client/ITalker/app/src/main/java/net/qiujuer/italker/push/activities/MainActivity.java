@@ -25,6 +25,7 @@ import net.qiujuer.italker.factory.persistence.Account;
 import net.qiujuer.italker.push.R;
 import net.qiujuer.italker.push.frags.main.ActiveFragment;
 import net.qiujuer.italker.push.frags.main.ContactFragment;
+import net.qiujuer.italker.push.frags.main.FindFragment;
 import net.qiujuer.italker.push.frags.main.GroupFragment;
 import net.qiujuer.italker.push.helper.NavHelper;
 
@@ -91,7 +92,8 @@ public class MainActivity extends Activity
                 getSupportFragmentManager(), this);
         mNavHelper.add(R.id.action_home, new NavHelper.Tab<>(ActiveFragment.class, R.string.title_home))
                 .add(R.id.action_group, new NavHelper.Tab<>(GroupFragment.class, R.string.title_group))
-                .add(R.id.action_contact, new NavHelper.Tab<>(ContactFragment.class, R.string.title_contact));
+                .add(R.id.action_contact, new NavHelper.Tab<>(ContactFragment.class, R.string.title_contact))
+                .add(R.id.action_find, new NavHelper.Tab<>(FindFragment.class, R.string.title_find));
 
 
         // 添加对底部按钮点击的监听
@@ -140,7 +142,8 @@ public class MainActivity extends Activity
         // 浮动按钮点击时，判断当前界面是群还是联系人界面
         // 如果是群，则打开群创建的界面
         if (Objects.equals(mNavHelper.getCurrentTab().extra, R.string.title_group)) {
-            // TODO 打开群创建界面
+            // 打开群创建界面
+            GroupCreateActivity.show(this);
         } else {
             // 如果是其他，都打开添加用户的界面
             SearchActivity.show(this, SearchActivity.TYPE_USER);

@@ -5,6 +5,7 @@ import net.qiujuer.web.italker.push.bean.api.base.ResponseModel;
 import net.qiujuer.web.italker.push.bean.api.user.UpdateInfoModel;
 import net.qiujuer.web.italker.push.bean.card.UserCard;
 import net.qiujuer.web.italker.push.bean.db.User;
+import net.qiujuer.web.italker.push.factory.PushFactory;
 import net.qiujuer.web.italker.push.factory.UserFactory;
 
 import javax.ws.rs.*;
@@ -93,7 +94,9 @@ public class UserService extends BaseService {
             return ResponseModel.buildServiceError();
         }
 
-        // TODO 通知我关注的人我关注他
+        // 通知我关注的人我关注他
+        // 给他发送一个我的信息过去
+        PushFactory.pushFollow(followUser, new UserCard(self));
 
         // 返回关注的人的信息
         return ResponseModel.buildOk(new UserCard(followUser, true));

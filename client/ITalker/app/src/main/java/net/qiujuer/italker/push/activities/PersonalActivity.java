@@ -1,5 +1,6 @@
 package net.qiujuer.italker.push.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -20,6 +21,7 @@ import net.qiujuer.genius.res.Resource;
 import net.qiujuer.italker.common.app.PresenterToolbarActivity;
 import net.qiujuer.italker.common.widget.PortraitView;
 import net.qiujuer.italker.factory.model.db.User;
+import net.qiujuer.italker.factory.persistence.Account;
 import net.qiujuer.italker.factory.presenter.contact.PersonalContract;
 import net.qiujuer.italker.factory.presenter.contact.PersonalPresenter;
 import net.qiujuer.italker.push.R;
@@ -107,6 +109,13 @@ public class PersonalActivity extends PresenterToolbarActivity<PersonalContract.
         MessageActivity.show(this, user);
     }
 
+    @OnClick(R.id.btn_logout)
+    void logout() {
+        // 退出登陆
+        Account.logout(this);
+        AccountActivity.show(this);
+    }
+
 
     /**
      * 更改关注菜单状态
@@ -129,6 +138,7 @@ public class PersonalActivity extends PresenterToolbarActivity<PersonalContract.
         return userId;
     }
 
+    @SuppressLint("StringFormatMatches")
     @Override
     public void onLoadDone(User user) {
         if (user == null)

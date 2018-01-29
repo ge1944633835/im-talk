@@ -73,6 +73,8 @@
                  class="net.qiujuer.web.italker.push.bean.db.PushHistory"/>
         <mapping package="net.qiujuer.web.italker.push.bean.db"
                  class="net.qiujuer.web.italker.push.bean.db.Apply"/>
+        <mapping package="net.qiujuer.web.italker.push.bean.db"
+                 class="net.qiujuer.web.italker.push.bean.db.Circle"/>
 
     </session-factory>
 </hibernate-configuration>

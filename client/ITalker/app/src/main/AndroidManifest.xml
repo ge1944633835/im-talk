@@ -87,6 +87,10 @@
             android:label="@string/title_member_list"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.TransStatusBar" />
+        <activity android:name=".activities.UploadCircleActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.TransStatusBar"/>
+
     </application>
 
 </manifest>

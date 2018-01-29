@@ -144,6 +144,8 @@ public class MainActivity extends Activity
         if (Objects.equals(mNavHelper.getCurrentTab().extra, R.string.title_group)) {
             // 打开群创建界面
             GroupCreateActivity.show(this);
+        } else if (Objects.equals(mNavHelper.getCurrentTab().extra, R.string.title_find)) {
+                UploadCircleActivity.show(this);
         } else {
             // 如果是其他，都打开添加用户的界面
             SearchActivity.show(this, SearchActivity.TYPE_USER);
@@ -191,6 +193,13 @@ public class MainActivity extends Activity
                 mAction.setImageResource(R.drawable.ic_contact_add);
                 rotation = 360;
             }
+
+            if (Objects.equals(newTab.extra, R.string.title_find)) {
+                // 朋友圈
+                mAction.setImageResource(R.drawable.ic_upload_circle);
+                rotation = -360;
+            }
+
         }
 
         // 开始动画

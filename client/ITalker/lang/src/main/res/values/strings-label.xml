@@ -46,4 +46,6 @@
     <string name="toast_audio_record_time_short_error">录音时间太短!</string>
 
     <string name="toast_download_error">下载失败!</string>
+
+    <string name="label_upload_hint">这一刻的想法...</string>
 </resources>

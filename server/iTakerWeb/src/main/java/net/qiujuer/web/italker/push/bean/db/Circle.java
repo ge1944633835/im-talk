@@ -1,26 +1,25 @@
 package net.qiujuer.web.italker.push.bean.db;
 
 
-import org.hibernate.annotations.*;
+import net.qiujuer.web.italker.push.bean.api.circle.CircleModel;
+import net.qiujuer.web.italker.push.bean.card.CircleCard;
+import net.qiujuer.web.italker.push.factory.UserFactory;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.CascadeType;
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.security.Principal;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
- *朋友圈的Model，对应数据库
+ * 朋友圈的Model，对应数据库
  *
  * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0
  */
 @Entity
 @Table(name = "TB_CIRCLE")
-public class Circle  {
+public class Circle {
 
     // 这是一个主键
     @Id
@@ -38,9 +37,29 @@ public class Circle  {
     @Column
     private String portrait;
 
-    // 不允许更改，不允许为null
+    // 描述不允许更改，不允许为null
     @Column(updatable = false, nullable = false)
     private String description;
+
+    // 图片附件
+    @Column(updatable = false, nullable = false)
+    private String imgs;
+
+
+    // 也是多对1，你可以发很多动态，每次动态都是一条记录
+    // 所有就是 多个Circle 对应 一个 User 的情况
+    @ManyToOne(optional = false)
+    // 定义关联的表字段名为personId，对应的是User.id
+    // 定义的是数据库中的存储字段
+    @JoinColumn(name = "personId")
+    private User person;
+    // 把这个列提取到我们的Model中，不允许为null，不允许更新，插入
+    @Column(nullable = false, updatable = false, insertable = false)
+    private String personId;
+
+    public void setPersonId(String personId) {
+        this.personId = personId;
+    }
 
     // 定义为创建时间戳，在创建时就已经写入
     @CreationTimestamp
@@ -65,6 +84,13 @@ public class Circle  {
         this.id = id;
     }
 
+    public String getImgs() {
+        return imgs;
+    }
+
+    public String getPersonId() {
+        return personId;
+    }
 
     public String getPortrait() {
         return portrait;
@@ -82,6 +108,9 @@ public class Circle  {
         this.description = description;
     }
 
+    public void setImgs(String imgs) {
+        this.imgs = imgs;
+    }
 
     public LocalDateTime getCreateAt() {
         return createAt;
@@ -105,5 +134,26 @@ public class Circle  {
 
     public void setLastReceivedAt(LocalDateTime lastReceivedAt) {
         this.lastReceivedAt = lastReceivedAt;
+    }
+
+
+    public void buildCircle(CircleModel model, User person) {
+
+        this.setDescription(model.description);
+        this.setImgs(model.imgs);
+        this.person = person;
+        if (!model.portrait.equals("")) {
+            this.setPortrait(model.portrait);
+        } else {
+            User user = UserFactory.findById(model.personId);
+            this.setPortrait(user.getPortrait());
+        }
+    }
+
+
+    public CircleCard buildCard(Circle model) {
+        CircleCard card = new CircleCard(model);
+
+        return card;
     }
 }

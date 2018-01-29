@@ -4,6 +4,8 @@ import net.qiujuer.italker.factory.model.api.RspModel;
 import net.qiujuer.italker.factory.model.api.account.AccountRspModel;
 import net.qiujuer.italker.factory.model.api.account.LoginModel;
 import net.qiujuer.italker.factory.model.api.account.RegisterModel;
+import net.qiujuer.italker.factory.model.api.circle.CircleCard;
+import net.qiujuer.italker.factory.model.api.circle.CircleModel;
 import net.qiujuer.italker.factory.model.api.group.GroupCreateModel;
 import net.qiujuer.italker.factory.model.api.group.GroupMemberAddModel;
 import net.qiujuer.italker.factory.model.api.message.MsgCreateModel;
@@ -105,4 +107,14 @@ public interface RemoteService {
     @POST("group/{groupId}/member")
     Call<RspModel<List<GroupMemberCard>>> groupMemberAdd(@Path("groupId") String groupId,
                                                          @Body GroupMemberAddModel model);
+
+    // 上传朋友圈
+    @POST("circle/upload")
+    Call<RspModel<CircleModel>> uploadCircle(@Body CircleModel model);
+
+    // 拉取朋友圈列表
+    @GET("circle/list")
+    Call<RspModel<List<CircleCard>>> circleList();
+
+
 }

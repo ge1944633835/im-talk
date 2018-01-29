@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/len_10">
+
+    <ImageView
+        android:id="@+id/item_find_img_portview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/len_4"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_find_tv_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            tools:text="这是描述" />
+
+        <ImageView
+            android:id="@+id/item_find_img_detail"
+            android:layout_width="@dimen/len_100"
+            android:layout_height="@dimen/len_100"
+            android:layout_marginTop="@dimen/len_10" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
